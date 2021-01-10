@@ -20,11 +20,11 @@
           <img src="{{url('public')}}/dist/img/pp.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ url('admin/beranda')}}" class="d-block">
+          <a href="{{ url('admin/login')}}" class="d-block">
          @if(Auth::check())
               {{request()->user()->nama}}
                 @else
-               silahkan Login
+               Silahkan Login
                @endif
           </a>
         </div>

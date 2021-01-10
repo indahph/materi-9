@@ -25,7 +25,7 @@
          @if(Auth::check())
               {{request()->user()->nama}}
                 @else
-               silahkan Login
+               Silahkan Login
                @endif
           <img src="{{ url ('public')}}/dist/img/pp.jpg" class="img-circle elevation-2" style="height: 100%" alt="User Image">
         </a>
