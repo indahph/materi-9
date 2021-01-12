@@ -18,10 +18,55 @@ class ClientProdukController extends Controller
 		return view('home', $data);
 	}
 
-	function ShowProduk()
-	{
+	function ShowProduk(){
 		$data['list_produk'] = Produk::all();
-		return view('produk', $data);
+		// return view('produk', $data);
+		// $list_bike  = ['Honda','Yamaha', 'Kawasaki', 'Suzuki', 'Vespa', 'KTM',];
+		// $list_bike = collect($list_bike);
+		$list_produk = Produk::all();
+
+
+		// Sorting
+		// SOrt By Harga Terendah
+		// dd($list_produk->sortBy('harga'));
+		// SOrt By Harga Tertinggi
+		// dd($list_produk->sortByDesc('harga')[1]);
+
+
+		// map
+
+		// $map = $list_produk-> map(function($item){
+		// 	$result['nama'] = $item->nama;
+		// 	$result['harga'] =$item->harga;
+		// 	return $result;
+
+
+		// });
+		// foreach ($list_produk as $item){
+		// 	echo "$item->nama<br>";
+		// }
+
+		// $list_produk->each(function($item){
+		// 	echo "$item->nama<br>";
+		// });
+
+		// Filter 
+
+		// $filtered = $list_produk->filter(function($item){
+		// 	return $item->harga > 20000000;
+		// });
+		// dd($filtered);
+
+		// $sum = $list_produk->min('stok');
+		// dd($sum);
+
+		// dd($map);
+
+		$data['list'] = Produk::Paginate(7);
+		return view ('produk', $data);
+
+		//dd($list_produk);
+
 	}
 
 	function ShowDetail()

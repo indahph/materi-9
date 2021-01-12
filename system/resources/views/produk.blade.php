@@ -89,22 +89,30 @@
               </div>
             </div>
           </div>
-          @foreach($list_produk as $produk)
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <a href="{{url('/detail')}}">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+          @foreach($list as $item)
+           <div class="col-lg-3 col-md-3 mt-4 d-flex align-items-stretch">
+             <div class="member">
+                <div class="member-img">
+                    <a href="{{url('detail', $item->id)}}">
+                       <img src="{{url("public/$item->foto")}}" alt="" class="img-fluid">
+                    </div>
+                <div class="member-info">
+                    <h5>{{$item->nama}}</h5>
+                    <span>Rp {{number_format($item->harga)}}</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div class="member-info">
-                <h4>{{$produk->nama}}</h4>
-                <span> Rp.{{number_format($produk->harga)}}</span>
-                </a>
-              </div>
+          @endforeach
+        </div>
+                  <div class="row">
+          <div class="col-md-12 mt-5">
+            <div class="float-right">
+              {{$list->links()}}
             </div>
           </div>
-          @endforeach
+       </div>
+
     </section><!-- End Team Section -->
 
     <!-- ======= Footer ======= -->

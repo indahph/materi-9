@@ -82,4 +82,6 @@ Route::post('admin/registrasi' , [AuthController::class, 'registrasiProcess']);
 Route::get('home' , [ClientProdukController::class, 'showHome']);
 Route::get('produk' , [ClientProdukController::class, 'showProduk']);
 Route::get('kategori' , [ClientProdukController::class, 'showKategori']);
-Route::get('detail' , [ClientProdukController::class, 'showDetail']);  
+Route::get('detail/{produk}' , [ClientProdukController::class, 'showDetail']);  
+
+Route::get('test-collection',[HomeController::class, 'testCollection']);

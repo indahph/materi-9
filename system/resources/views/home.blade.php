@@ -61,7 +61,7 @@
     </div>
   </section><!-- End Hero -->
 
-  <main id="main">
+  <main id="main"> 
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients section-bg">
