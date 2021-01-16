@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Jual Beli Motor Online | Log in</title>
+  <title>Jual Beli Laptop | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,9 +28,11 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="{{url('admin/beranda')}}" method="get">
+       @include('template.utils.notif')
+      <form action="login" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -38,13 +40,19 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+         <!-- <div class="input-group mb-3">
+            <select name="login_as" class="form-control">
+              <option value="1">Admin</option>
+              <option value="2">Pengguna</option>
+            </select>
+        </div> -->
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
@@ -56,7 +64,6 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <a href="{{url('beranda')}}">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button></a>
           </div>
           <!-- /.col -->

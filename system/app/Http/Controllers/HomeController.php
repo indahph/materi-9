@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use App\Models\Provinsi;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Desa;
 
 class HomeController extends Controller
 {
@@ -80,6 +84,14 @@ class HomeController extends Controller
 
 		dd($list_bike, $list_produk);
 
+	}
+
+	function testAjax(){
+		$data['list_provinsi'] = Provinsi::all();
+		$data['list_kabupaten'] = Kabupaten::all();
+		$data['list_kecamatan'] = Kecamatan::all();
+		$data['list_desa'] = Desa::all();
+		return view ('test-ajax', $data);
 	}
 
 }

@@ -23,10 +23,16 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
          @if(Auth::check())
-              {{request()->user()->nama}}
-                @else
-               Silahkan Login
-               @endif
+            {{request()->user()->nama}}
+            @elseif(Auth::guard('pembeli')->check())
+            {{Auth::guard('pembeli')->user()->nama}}
+            <br>Pembeli
+            @elseif(Auth::guard('penjual')->check())
+            {{Auth::guard('penjual')->user()->nama}}
+            <br>Penjual
+            @else
+              Silahkan Login
+            @endif
           <img src="{{ url ('public')}}/dist/img/pp.jpg" class="img-circle elevation-2" style="height: 100%" alt="User Image">
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -34,7 +40,7 @@
           <a href="#" class="dropdown-item">
             <i class="fa fa-user"></i> Profile
           </a>
-          <a href="#" class="dropdown-item">
+          <a href="{{url('setting')}}" class="dropdown-item">
             <i class="fa fa-cog"></i> Setting
           </a>
           <a href="{{url('admin/logout')}}" class="dropdown-item">

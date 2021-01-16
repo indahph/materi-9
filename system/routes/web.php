@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
+// use App\Http\Controllers\SettingController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ClientProdukController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,17 +25,25 @@ Route::get('/', function () {
 });
 
 Route::get('home' , [HomeController::class, 'showHome']);
+// Route::get('home/{status}' , [HomeController::class, 'showHome']);
 Route::get('produk' , [HomeController::class, 'showProduk']);
 Route::get('kategori' , [HomeController::class, 'showKategori']);
 Route::get('template' , [HomeController::class, 'showTemplate']);
 Route::get('admin/beranda' ,[HomeController::class, 'showAdminBeranda']);
+Route::get('admin/beranda{status}' ,[HomeController::class, 'showAdminBeranda']);
+
 Route::get('admin/kategori' , [HomeController::class, 'showAdminKategori']);
 
 //kenapa disini ada 2 buah route yang sama ???
 Route::get('registrasi' , [AuthController::class, 'showRegistrasi']);
 Route::get('login' , [AuthController::class, 'showLogin']);
+Route::post('login' , [AuthController::class, 'loginProsess']);
 Route::get('admin/registrasi' , [AuthController::class, 'showAdminRegistrasi']);
 
+
+
+Route::get('setting', [SettingController::class, 'index']);
+Route::post('setting', [SettingController::class, 'store']);
 
 
 // Route::prefix('admin')->group(function(){
@@ -85,3 +95,4 @@ Route::get('kategori' , [ClientProdukController::class, 'showKategori']);
 Route::get('detail/{produk}' , [ClientProdukController::class, 'showDetail']);  
 
 Route::get('test-collection',[HomeController::class, 'testCollection']);
+Route::get('test-ajax', [HomeController::class, 'testAjax']);
